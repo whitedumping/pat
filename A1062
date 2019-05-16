@@ -4,7 +4,6 @@
 #include<string.h>
 
 #define maxn 100005
-
 using namespace std;
 
 struct human{
@@ -13,7 +12,7 @@ struct human{
     int type;
 }mans[maxn];
 
-bool cmp(human a, human b){
+bool cmp(human a, human b){ //实现四个元素排名
     if(a.type == b.type){
         if(a.total != b.total){
             return a.total > b.total;
