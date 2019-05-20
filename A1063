@@ -1,0 +1,41 @@
+这个题目主要考场set的使用
+set能够自动按照递增顺序，去重，时间复杂度为logN
+set通过find（iterator）查找, 未找到为it!=s.end()，时间复杂度为logN
+set的遍历通过for(set<typename> :: iterator it = s.begin(); it != s.end(); it++)
+
+#include <iostream>
+#include <stdio.h>
+#include <set>
+
+using namespace std;
+
+set<int> arr[55];
+set<int> :: iterator it;
+
+int main()
+{
+    int n, m, i, j, temp;
+    scanf("%d", &n);
+    for(i = 1; i <= n; i++){
+        scanf("%d", &m);
+        for(j = 0; j < m; j++){
+            scanf("%d", &temp);
+            arr[i].insert(temp);
+        }
+    }
+    int k, a, b, n1, n2;
+    scanf("%d", &k);
+    while(k--){
+        n1 = n2 = 0;
+        scanf("%d %d", &a, &b);
+        for(set<int> :: iterator t = arr[a].begin(); t != arr[a].end(); t++){
+            it = arr[b].find(*t);
+            if(it != arr[b].end()){ //没找到
+                n1++;
+            }
+        }
+        n2 = arr[a].size() + arr[b].size() - n1;  //题目中的n2为两个set大小之和减去公共数的个数
+        printf("%.1f%%\n", 100.0 * n1 / n2);
+    }
+    return 0;
+}
