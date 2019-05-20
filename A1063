@@ -1,7 +1,7 @@
-这个题目主要考场set的使用
-set能够自动按照递增顺序，去重，时间复杂度为logN
-set通过find（iterator）查找, 未找到为it!=s.end()，时间复杂度为logN
-set的遍历通过for(set<typename> :: iterator it = s.begin(); it != s.end(); it++)
+//这个题目主要考场set的使用
+//set能够自动按照递增顺序，去重，时间复杂度为logN
+//set通过find（iterator）查找, 未找到为it!=s.end()，时间复杂度为logN
+//set的遍历通过for(set<typename> :: iterator it = s.begin(); it != s.end(); it++)
 
 #include <iostream>
 #include <stdio.h>
