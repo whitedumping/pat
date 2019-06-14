@@ -1,0 +1,53 @@
+哈希表，二次方探测，for i-m， （temp + i * i） % m
+查找>=m的质数，注意1不是质数
+
+#include <stdio.h>
+#include <string.h>
+#define maxn 10010
+
+using namespace std;
+
+bool is_prime(int m){
+    if(m <= 1) return false;
+    for(int i = 2; i * i <= m; i++){
+        if(m % i == 0) return false;
+    }
+    return true;
+}
+
+int min_prime(int m){
+    while(1){
+        if(is_prime(m)){
+            break;
+        }else m++;
+    }
+    return m;
+}
+
+int arr[maxn] = {0};
+int main(){
+    int m, n, temp, t;
+    scanf("%d %d", &m, &n);
+    m = min_prime(m);
+    for(int i = 0; i < n; i++){
+        scanf("%d", &temp);
+        if(i > 0) printf(" ");
+        t = temp % m;
+        if(arr[t] == 0){
+            arr[t] = 1;
+            printf("%d", t);
+        }else{
+            int j;
+            for(j = 1; j < m; j++){
+                t = (temp + j * j) % m;
+                if(arr[t] == 0){
+                    arr[t] = 1;
+                    printf("%d", t);
+                    break;
+                }
+            }
+            if(j == m) printf("-");
+        }
+    }
+    return 0;
+}
